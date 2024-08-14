@@ -1,0 +1,10 @@
+{
+    "mode":"unittest",
+    "tests": [
+        {
+            "display_name": "test sample",
+            "file": "sample.json",
+            "id":["*"]
+        }
+    ]
+}

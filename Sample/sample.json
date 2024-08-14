@@ -1,0 +1,30 @@
+{
+    "url": "https://jsonplaceholder.typicode.com/posts/1",
+    "method": "GET",
+    "headers": {
+    },
+    "base_request":{
+    },
+    "type": "json",
+    "captures":[
+        {
+            "pass_path": "base_request.userId",
+            "capture_path": "userId"
+        }
+    ],
+    "cases":[
+        {
+            "id": 1,
+            "name": "get UserId 1",
+            "description": "get user id 1 info",
+            "tags": ["success"],
+            "assert_status": 200,
+            "request":{
+            },
+            "assert_response": {
+                "userId": 1,
+                "id": 1
+            }
+        }
+    ]
+}

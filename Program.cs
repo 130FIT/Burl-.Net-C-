@@ -1,70 +1,66 @@
-﻿using System;
-using System.Net.Http;
-using System.Threading.Tasks;
+﻿
+using Controllers;
+using Helpers;
+using Models;
+using Services;
 
-class Program
+
+int mode = 0; // 0 = unit test, 1 = integration test
+List<TestFileRunnerComponent> files;
+FileReaderService fileReaderService = new FileReaderService();
+if (args.Length > 0)
 {
-    static async Task Main(string[] args)
+    string firstArg = args[0].ToLower();
+
+    switch (firstArg)
     {
-        // ตรวจสอบว่า flag ถูกส่งเข้ามาหรือไม่
-        if (args.Length > 0)
-        {
-            string firstArg = args[0].ToLower();
-
-            switch (firstArg)
-            {
-                case "-help":
-                    ShowHelp();
-                    return;
-                case "-version":
-                    ShowVersion();
-                    return;
-                case "-i":
-                    Console.WriteLine("Integration test mode is not yet implemented.");
-                    return;
-                case "-u":
-                    Console.WriteLine("Unit test mode is not yet implemented.");
-                    return;
-            }
-        }
-
-        // ถ้าไม่มี flag ใดๆ ถูกส่งเข้ามา, ตรวจสอบว่ามี URL ถูกส่งเข้ามาหรือไม่
-        if (args.Length == 0 || args.Length > 0 && args[0].StartsWith("-"))
-        {
-            Console.WriteLine("Please provide a URL as a command-line argument.");
+        case "-help":
+        case "--h":
+            CliHelper.ShowHelp();
             return;
-        }
-
-        string url = args[0];
-
-        using (HttpClient client = new HttpClient())
-        {
-            try
-            {
-                HttpResponseMessage response = await client.GetAsync(url);
-                response.EnsureSuccessStatusCode();
-
-                string responseBody = await response.Content.ReadAsStringAsync();
-                Console.WriteLine(responseBody);
-            }
-            catch (HttpRequestException e)
-            {
-                Console.WriteLine("Error in HTTP request: " + e.Message);
-            }
-        }
+        case "-version":
+        case "--v":
+            CliHelper.ShowVersion();
+            return;
+        case "--r":
+        case "-runner":
+            Console.WriteLine("Test with runner file mode enabled.");
+            RunnerFileController runnerFileController = new RunnerFileController(fileReaderService);
+            runnerFileController.ReadRunnerFileAsync(args[1]).Wait();
+            RunnerFileRequest runnerFileRequest = runnerFileController.GetRunnerFileRequest();
+            mode = runnerFileRequest?.Mode?.ToUpper() == "I" ? 1 : 0;
+            files = runnerFileRequest?.TestFiles ?? new List<TestFileRunnerComponent>();
+            break;
+        case "--i":
+        case "-integration":
+            Console.WriteLine("Integration test mode is not yet implemented.");
+            mode = 1;
+            files = CliHelper.ParseTestFile(args.Skip(1).ToArray());
+            break;
+        case "--u":
+        case "-unit":
+            Console.WriteLine("\nUnit test mode enabled.\n");
+            mode = 0;
+            files = CliHelper.ParseTestFile(args.Skip(1).ToArray());
+            break;
+        default:
+            Console.WriteLine("\nInvalid argument. Use -help or --h for help.\n");
+            return;
     }
+    string filesString = string.Join(", ", files.Select(f => f.File + ">" + string.Join(", ", f.Ids)));
+    Console.WriteLine($"files: {filesString}");
+}
+else
+{
+    Console.WriteLine("\nNo arguments provided. Use -help or --h for help.\n");
+    return;
+}
 
-    static void ShowHelp()
-    {
-        Console.WriteLine("Usage:");
-        Console.WriteLine("  Burl [URL]");
-        Console.WriteLine("Options:");
-        Console.WriteLine("  -help       Display help information.");
-        Console.WriteLine("  -version    Display version information.");
-    }
-
-    static void ShowVersion()
-    {
-        Console.WriteLine("Burl version 1.0.0");
-    }
+TestController testController = new TestController(fileReaderService);
+switch (mode)
+{
+    case 0:
+        break;
+    case 1:
+        break;
 }
