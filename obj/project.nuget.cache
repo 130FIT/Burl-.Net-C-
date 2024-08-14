@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "ikxLo53R3Cw=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\ASUS\\Desktop\\ฝึกงาน\\TestTools\\.net\\Burl\\Burl.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\ASUS\\.nuget\\packages\\refit\\7.1.2\\refit.7.1.2.nupkg.sha512",
+    "C:\\Users\\ASUS\\.nuget\\packages\\system.net.http.json\\8.0.0\\system.net.http.json.8.0.0.nupkg.sha512",
+    "C:\\Users\\ASUS\\.nuget\\packages\\system.text.encodings.web\\8.0.0\\system.text.encodings.web.8.0.0.nupkg.sha512",
+    "C:\\Users\\ASUS\\.nuget\\packages\\system.text.json\\8.0.0\\system.text.json.8.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

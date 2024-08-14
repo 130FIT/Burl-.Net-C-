@@ -1,0 +1,17 @@
+C:\Users\ASUS\Desktop\ฝึกงาน\TestTools\.net\Burl\bin\Debug\net8.0\Burl.exe
+C:\Users\ASUS\Desktop\ฝึกงาน\TestTools\.net\Burl\bin\Debug\net8.0\Burl.deps.json
+C:\Users\ASUS\Desktop\ฝึกงาน\TestTools\.net\Burl\bin\Debug\net8.0\Burl.runtimeconfig.json
+C:\Users\ASUS\Desktop\ฝึกงาน\TestTools\.net\Burl\bin\Debug\net8.0\Burl.dll
+C:\Users\ASUS\Desktop\ฝึกงาน\TestTools\.net\Burl\bin\Debug\net8.0\Burl.pdb
+C:\Users\ASUS\Desktop\ฝึกงาน\TestTools\.net\Burl\bin\Debug\net8.0\Refit.dll
+C:\Users\ASUS\Desktop\ฝึกงาน\TestTools\.net\Burl\obj\Debug\net8.0\Burl.csproj.AssemblyReference.cache
+C:\Users\ASUS\Desktop\ฝึกงาน\TestTools\.net\Burl\obj\Debug\net8.0\Burl.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ASUS\Desktop\ฝึกงาน\TestTools\.net\Burl\obj\Debug\net8.0\Burl.AssemblyInfoInputs.cache
+C:\Users\ASUS\Desktop\ฝึกงาน\TestTools\.net\Burl\obj\Debug\net8.0\Burl.AssemblyInfo.cs
+C:\Users\ASUS\Desktop\ฝึกงาน\TestTools\.net\Burl\obj\Debug\net8.0\Burl.csproj.CoreCompileInputs.cache
+C:\Users\ASUS\Desktop\ฝึกงาน\TestTools\.net\Burl\obj\Debug\net8.0\Burl.csproj.Up2Date
+C:\Users\ASUS\Desktop\ฝึกงาน\TestTools\.net\Burl\obj\Debug\net8.0\Burl.dll
+C:\Users\ASUS\Desktop\ฝึกงาน\TestTools\.net\Burl\obj\Debug\net8.0\refint\Burl.dll
+C:\Users\ASUS\Desktop\ฝึกงาน\TestTools\.net\Burl\obj\Debug\net8.0\Burl.pdb
+C:\Users\ASUS\Desktop\ฝึกงาน\TestTools\.net\Burl\obj\Debug\net8.0\Burl.genruntimeconfig.cache
+C:\Users\ASUS\Desktop\ฝึกงาน\TestTools\.net\Burl\obj\Debug\net8.0\ref\Burl.dll

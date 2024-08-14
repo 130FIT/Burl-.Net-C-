@@ -1,0 +1,6 @@
+C:\Users\ASUS\Desktop\ฝึกงาน\TestTools\.net\Burl\publish\Burl.exe
+C:\Users\ASUS\Desktop\ฝึกงาน\TestTools\.net\Burl\publish\Burl.dll
+C:\Users\ASUS\Desktop\ฝึกงาน\TestTools\.net\Burl\publish\Burl.deps.json
+C:\Users\ASUS\Desktop\ฝึกงาน\TestTools\.net\Burl\publish\Burl.runtimeconfig.json
+C:\Users\ASUS\Desktop\ฝึกงาน\TestTools\.net\Burl\publish\Burl.pdb
+C:\Users\ASUS\Desktop\ฝึกงาน\TestTools\.net\Burl\publish\Refit.dll
