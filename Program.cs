@@ -25,15 +25,24 @@ if (args.Length > 0)
         case "--r":
         case "-runner":
             Console.WriteLine("Test with runner file mode enabled.");
+            string fullPath = Path.GetFullPath(args[1]);
+            // get only the directory path
+            string directoryPath = Path.GetDirectoryName(fullPath) ?? string.Empty;
+            if (string.IsNullOrWhiteSpace(directoryPath))
+            {
+                Console.WriteLine("Invalid directory path.");
+                return;
+            }
             RunnerFileController runnerFileController = new RunnerFileController(fileReaderService);
-            runnerFileController.ReadRunnerFileAsync(args[1]).Wait();
+            runnerFileController.ReadRunnerFile(args[1]);
             RunnerFileRequest runnerFileRequest = runnerFileController.GetRunnerFileRequest();
-            mode = runnerFileRequest?.Mode?.ToUpper() == "I" ? 1 : 0;
+            Console.WriteLine($"Mode: {runnerFileRequest?.Mode?.ToUpper()}");
+            mode = runnerFileRequest?.Mode?.ToUpper() == "i" ? 1 : 0;
             files = runnerFileRequest?.TestFiles ?? new List<TestFileRunnerComponent>();
+            Console.WriteLine($"Files: {files}");
             break;
         case "--i":
         case "-integration":
-            Console.WriteLine("Integration test mode is not yet implemented.");
             mode = 1;
             files = CliHelper.ParseTestFile(args.Skip(1).ToArray());
             break;
@@ -47,20 +56,20 @@ if (args.Length > 0)
             Console.WriteLine("\nInvalid argument. Use -help or --h for help.\n");
             return;
     }
-    string filesString = string.Join(", ", files.Select(f => f.File + ">" + string.Join(", ", f.Ids)));
-    Console.WriteLine($"files: {filesString}");
 }
 else
 {
     Console.WriteLine("\nNo arguments provided. Use -help or --h for help.\n");
     return;
 }
-
-TestController testController = new TestController(fileReaderService);
+FileWriterService fileWriterService = new FileWriterService();
+TestController testController = new TestController(fileReaderService, new HttpService(fileWriterService), fileWriterService);
 switch (mode)
 {
     case 0:
+        testController.UnitTesting(files);
         break;
     case 1:
+        testController.IntegrationTesting(files);
         break;
 }

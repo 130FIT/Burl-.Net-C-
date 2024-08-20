@@ -15,3 +15,4 @@ C:\Users\ASUS\Desktop\ฝึกงาน\TestTools\.net\Burl\obj\Debug\net8.0\re
 C:\Users\ASUS\Desktop\ฝึกงาน\TestTools\.net\Burl\obj\Debug\net8.0\Burl.pdb
 C:\Users\ASUS\Desktop\ฝึกงาน\TestTools\.net\Burl\obj\Debug\net8.0\Burl.genruntimeconfig.cache
 C:\Users\ASUS\Desktop\ฝึกงาน\TestTools\.net\Burl\obj\Debug\net8.0\ref\Burl.dll
+C:\Users\ASUS\Desktop\ฝึกงาน\TestTools\.net\Burl\bin\Debug\net8.0\Newtonsoft.Json.dll

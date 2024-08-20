@@ -19,23 +19,57 @@ namespace Services
                 using (StreamReader reader = new StreamReader(filePath))
                 {
                     string json = await reader.ReadToEndAsync();
+
                     return JsonSerializer.Deserialize<T>(json) ?? throw new Exception("Deserialization failed");
                 }
             }
             catch (Exception ex)
             {
+                Console.WriteLine($"Error reading file: {ex.Message}");
                 throw new Exception($"Error reading file: {ex.Message}");
             }
         }
-
-        public Task<ApiRequest> ReadTestFileAsync(string filePath)
+        private async Task<T> ReadFileAsync<T>(string filePath, string destinationPath)
         {
-            return ReadFileAsync<ApiRequest>(filePath);
+            if (!File.Exists(filePath))
+            {
+                throw new FileNotFoundException("File not found", filePath);
+            }
+            try
+            {
+                File.Copy(filePath, destinationPath, true);
+                using (StreamReader reader = new StreamReader(filePath))
+                {
+                    string json = await reader.ReadToEndAsync();
+
+                    return JsonSerializer.Deserialize<T>(json) ?? throw new Exception("Deserialization failed");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error reading file: {ex.Message}");
+                throw new Exception($"Error reading file: {ex.Message}");
+            }
+        }
+        public Task<ApiRequest> ReadTestFileAsync(string filePath,string directoryPath)
+        {
+            Directory.CreateDirectory(Path.Combine(directoryPath, "source"));
+            return ReadFileAsync<ApiRequest>(filePath, Path.Combine(directoryPath, "source", Path.GetFileName(filePath)));
         }
 
         public Task<RunnerFileRequest> ReadRunnerFileAsync(string filePath)
         {
-            return ReadFileAsync<RunnerFileRequest>(filePath);
+            RunnerFileRequest runner = ReadFileAsync<RunnerFileRequest>(filePath).Result;
+            runner.TestFiles.ForEach(testFile =>
+            {
+                string? directoryName = Path.GetDirectoryName(filePath);
+                if (directoryName != null)
+                {
+                    testFile.File = Path.Combine(directoryName, testFile.File);
+                }
+            });
+            return Task.FromResult(runner);
         }
+
     }
 }

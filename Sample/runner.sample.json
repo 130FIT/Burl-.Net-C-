@@ -1,10 +1,19 @@
 {
-    "mode":"unittest",
+    "mode": "unittest",
     "tests": [
         {
             "display_name": "test sample",
             "file": "sample.json",
-            "id":["*"]
+            "id": [
+                "*"
+            ]
+        },
+        {
+            "display_name": "test Xml sample",
+            "file": "xml_sample.json",
+            "id": [
+                "*"
+            ]
         }
     ]
 }

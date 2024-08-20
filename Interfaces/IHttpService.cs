@@ -4,10 +4,8 @@ namespace Interfaces
 
     public interface IHttpService
     {
-        Task<string> GetAsync(string url);
-        Task<string> PostAsync(string url, string content);
-        Task<string> PutAsync(string url, string content);
-        Task<string> DeleteAsync(string url);
+        HttpResponseMessage Request(string url, Dictionary<string, object> headers, string? method, string? type, object body,string step);
+
     }
 
 }

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Burl")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+99a74e4d6f3eca903f5dcf0cfe476eb167bb08ce")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+12909479f2d691c3acb46593c52cee1897363cc5")]
 [assembly: System.Reflection.AssemblyProductAttribute("Burl")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Burl")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

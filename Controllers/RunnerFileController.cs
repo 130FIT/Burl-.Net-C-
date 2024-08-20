@@ -14,7 +14,7 @@ namespace Controllers
             _fileReaderService = fileReaderService;
         }
 
-        public async Task<bool> ReadRunnerFileAsync(string filePath)
+        public bool ReadRunnerFile(string filePath)
         {
             if (string.IsNullOrWhiteSpace(filePath))
             {
@@ -23,7 +23,7 @@ namespace Controllers
 
             try
             {
-                _runnerFileRequest = await _fileReaderService.ReadRunnerFileAsync(filePath);
+                _runnerFileRequest = _fileReaderService.ReadRunnerFileAsync(filePath).Result;
                 Console.WriteLine($"\n {_runnerFileRequest.Mode} \n");
                 return _runnerFileRequest != null;
             }

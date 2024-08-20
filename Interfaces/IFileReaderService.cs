@@ -5,7 +5,7 @@ namespace Services
 
     public interface IFileReaderService
     {
-        Task<ApiRequest> ReadTestFileAsync(string filePath);
+        Task<ApiRequest> ReadTestFileAsync(string filePath, string destinationPath);
         Task<RunnerFileRequest> ReadRunnerFileAsync(string filePath);
 
     }

@@ -5,7 +5,9 @@
         "Content-Type": "application/json",
         "X-Auth-Token": "123456"
     },
-    "base_request": {},
+    "base_request": {
+        "userId": 3
+    },
     "type": "json",
     "captures": [
         {
@@ -25,6 +27,24 @@
             "request": {},
             "assert_response": {
                 "userId": 1,
+                "id": 1
+            },
+            "assert_headers": {
+                "(contains)Cache-Control": "max-age=43200",
+                "(count)Vary": 2
+            }
+        },
+        {
+            "id": 2,
+            "name": "get UserId 1 Fail",
+            "description": "get user id 1 info Fail",
+            "tags": [
+                "Fail"
+            ],
+            "assert_status": 200,
+            "request": {},
+            "assert_response": {
+                "userId": 2,
                 "id": 1
             },
             "assert_headers": {
